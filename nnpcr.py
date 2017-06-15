@@ -83,11 +83,11 @@ def loadFeatures(files):
         #cv2.imshow("orig", img)
         h, w, _ = img.shape
         if w > h:
-            diff = w - h
-            img = img[:, diff / 2: diff / 2 + h]
+            half_diff = int((w - h) / 2) 
+            img = img[:, half_diff / 2: half_diff + h]
         elif w < h:
-            diff = h - w
-            img = img[diff / 2: diff / 2 + w, :]
+            half_diff = int((h - w) / 2)
+            img = img[half_diff / 2: half_diff / 2 + w, :]
         img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
         data[n] = img.ravel()
         # cv2.imshow("res", img)
